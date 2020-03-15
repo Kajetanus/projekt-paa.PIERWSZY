@@ -40,3 +40,5 @@ app.on('error', (err, ctx) => {
 module.exports = app;
 
 require('./store').init()
+const tasks = require('./routes/tasks)
+app.use(tasks.routes(), tasks.allowedMethods())
