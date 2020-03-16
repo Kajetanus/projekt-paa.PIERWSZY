@@ -3,17 +3,6 @@ const service = storage.createTableService()
 const table = 'tasks'
 const uuid = require('uuid')
 
-const init = async () => (
-  new Promise((resolve, reject) => {
-    service.createTableIfNotExists(table, (error, result, response) => {
-      !error ? resolve() : reject()
-    })
-  })
-)
-
-module.exports = {
-  init
-}
 const createTask = async (title) => (
   new Promise((resolve, reject) => {
     const generator = storage.TableUtilities.entityGenerator
@@ -31,4 +20,16 @@ const createTask = async (title) => (
 module.exports = {
   init,
   createTask
+}
+
+const init = async () => (
+  new Promise((resolve, reject) => {
+    service.createTableIfNotExists(table, (error, result, response) => {
+      !error ? resolve() : reject()
+    })
+  })
+)
+
+module.exports = {
+  init
 }

@@ -1,6 +1,3 @@
-const router = require('koa-router')()
-const store = require('../store')
-
 router.prefix('/tasks')
 
 router.post('/add', async (ctx, next) => {
